@@ -1,5 +1,8 @@
-import pkg_resources
+from importlib.metadata import PackageNotFoundError, version
 
+try:
+    __version__ = version("pinax-templates")
+except PackageNotFoundError:
+    __version__ = "unknown"
 
 default_app_config = "pinax.templates.apps.AppConfig"
-__version__ = pkg_resources.get_distribution("pinax-templates").version
